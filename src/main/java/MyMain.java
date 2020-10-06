@@ -6,30 +6,55 @@ public class MyMain {
     // For example, 75.5% would be 75.5
     public static double probabilityOneSix() {
         int count = 0;
-        int temp = 0;
-        for (int i = 0; i < 10000; i++) {
-            temp = (int) (Math.random() * 6) + 1;
-            count += (temp == 6) ? 1 : 0;
+        for (int j = 0; j < 10000; j++) {
+            for (int i = 0; i < 6; i++) {
+                if ((int) (Math.random() * 6) + 1 == 6) {
+                    count++;
+                    break; } }
         }
-        return 10000 / count;
+        return ((double) count / (double) 10000) * 100;
     }
 
     // Calculate the probability of rolling at least two 6's when rolling 
     // twelve dice. Uses 10000 trials.
     public static double probabilityTwoSixes() {
-        // REPLACE WITH YOUR CODE HERE
-        return -1.0;
+        int count = 0;
+        int amount = 0;
+        for (int i = 0; i < 10000; i++) {
+            amount = 0;
+            for (int j = 0; j < 12; j++) {
+                if ((int) (Math.random() * 6) + 1 == 6)
+                    amount++;
+                if (amount == 2) {
+                    count++;
+                    break; }
+            }
+        }
+        return ((double) count / (double) 10000) * 100;
     }
 
     // Calculate the probability of rolling at least three 6's when rolling 
     // eighteen dice. Uses 10000 trials.
     public static double probabilityThreeSixes() {
-        // REPLACE WITH YOUR CODE HERE
-        return -1.0;
+        int count = 0;
+        int amount = 0;
+        for (int i = 0; i < 10000; i++) {
+            amount = 0;
+            for (int j = 0; j < 18; j++) {
+                if ((int) (Math.random() * 6) + 1 == 6)
+                    amount++;
+                if (amount == 3) {
+                    count++;
+                    break; }
+            }
+        }
+        return ((double) count / (double) 10000) * 100;
     }
 
 
     public static void main(String[] args) {
-        // YOUR CODE HERE
+        System.out.println("If you roll 6 dice you will get at least one 6 " + probabilityOneSix() + "% of the time");
+        System.out.println("If you roll 12 dice you will get at least two 6's " + probabilityTwoSixes() + "% of the time");
+        System.out.println("If you roll 18 dice you will get at least three 6's " + probabilityThreeSixes() + "% of the time");
     }
 }
